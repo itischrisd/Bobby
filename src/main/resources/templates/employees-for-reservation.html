@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Wybór pracownika</title>
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="mt-8" layout:fragment="content">
+    <h2 class="text-2xl font-semibold">Lista dostępnych pracowników</h2>
+    <table class="min-w-full bg-white mt-4">
+        <thead>
+        <tr>
+            <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Numer pracownika</th>
+            <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Imię</th>
+            <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Nazwisko</th>
+            <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Stanowisko</th>
+            <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td class="py-2 px-4 border-b border-gray-300" th:text="${employee.employeeNumber}">001</td>
+            <td class="py-2 px-4 border-b border-gray-300" th:text="${employee.firstName}">Jan</td>
+            <td class="py-2 px-4 border-b border-gray-300" th:text="${employee.lastName}">Kowalski</td>
+            <td class="py-2 px-4 border-b border-gray-300" th:text="${employee.position}">Monter</td>
+            <td class="py-2 px-4 border-b border-gray-300">
+                <button th:data-id="${employee.id}"
+                        th:data-first-name="${employee.firstName}"
+                        th:data-last-name="${employee.lastName}"
+                        onclick="openModal(this.getAttribute('data-id'), this.getAttribute('data-first-name') + ' ' + this.getAttribute('data-last-name'))"
+                        class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600">Wybierz</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form id="assignEmployeeForm" action="/reservations/assign-employee" method="post" style="display:none;">
+        <input type="hidden" name="employeeId" id="employeeId">
+        <input type="hidden" name="reservationId" th:value="${reservationId}">
+    </form>
+
+    <div id="confirmationModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-md w-full max-w-md">
+            <h2 class="text-2xl font-semibold mb-4">Potwierdzenie wyboru</h2>
+            <p class="mb-4">Czy na pewno chcesz przypisać pracownika <span id="selectedEmployee" class="font-bold"></span> do tej rezerwacji?</p>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mr-2">Anuluj</button>
+                <button onclick="confirmSelection()" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Zatwierdź</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(employeeId, employeeName) {
+            document.getElementById('employeeId').value = employeeId;
+            document.getElementById('selectedEmployee').innerText = employeeName;
+            document.getElementById('confirmationModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('confirmationModal').classList.add('hidden');
+        }
+
+        function confirmSelection() {
+            document.getElementById('assignEmployeeForm').submit();
+        }
+    </script>
+</div>
+</body>
+</html>

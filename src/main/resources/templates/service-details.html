@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Szczegóły usługi</title>
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="mt-8" layout:fragment="content">
+    <h2 class="text-2xl font-semibold">Szczegóły usługi</h2>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-4" th:object="${service}">
+        <h3 class="text-xl font-semibold" th:text="*{name}">Nazwa</h3>
+        <p class="mt-4"><strong>Pełny opis:</strong>
+        <div th:text="*{description}"></div>
+        <p class="mt-4"><strong>Orientacyjny czas wykonania:</strong>
+        <div th:text="*{expectedTime} + ' minut'"></div>
+        <p class="mt-4"><strong>Możliwość wykonania poza sklepem:</strong>
+        <div th:text="*{isDoneOffsite} ? Tak : Nie"></div>
+        <div class="mt-6">
+            <a th:href="@{/services/{id}/reservations(id=${service.id})}">
+                <button class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Przeglądaj rezerwacje
+                </button>
+            </a>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ml-2">Edytuj usługę</button>
+            <button class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2">Usuń usługę</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

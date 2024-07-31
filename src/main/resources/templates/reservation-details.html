@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Szczegóły rezerwacji</title>
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="mt-8" layout:fragment="content">
+    <h2 class="text-2xl font-semibold">Szczegóły rezerwacji</h2>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-4">
+        <p class="mt-4"><strong>Numer rezerwacji:</strong> <span th:text="${reservation.number}">number</span></p>
+        <p class="mt-4"><strong>Data złożenia rezerwacji:</strong> <span th:text="${reservation.submissionDate}">submission date</span>
+        </p>
+        <p class="mt-4"><strong>Planowana data wykonania usług:</strong> <span
+                th:text="${reservation.plannedStartDate}">planned date</span></p>
+        <h3 class="text-xl font-semibold mt-6">Lista zarezerwowanych usług:</h3>
+        <ul class="list-disc list-inside mt-4">
+            <li th:each="service : ${reservation.services}" th:text="${service.name}">service name</li>
+        </ul>
+        <div class="mt-6">
+            <a th:href="@{/employees/for-reservation(reservationId=${reservation.id})}">
+                <button class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Przypisz pracownika</button>
+            </a>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ml-2">Edytuj rezerwację</button>
+            <button class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2">Usuń rezerwację</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

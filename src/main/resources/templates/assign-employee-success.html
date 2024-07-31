@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Przypisanie pomyślne</title>
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="mt-6" layout:fragment="content">
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold">Przypisanie Pracownika</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md mt-4">
+            <p class="text-xl font-semibold text-green-600">Pracownik został pomyślnie przypisany do rezerwacji!</p>
+            <div>
+                <a href="/reservations/"
+                   class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mt-4 inline-block">Powrót do listy
+                    rezerwacji</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

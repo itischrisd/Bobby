@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Lista usług</title>
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="mt-8" layout:fragment="content">
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold">Lista dostępnych usług</h2>
+        <table class="min-w-full bg-white mt-4">
+            <thead>
+            <tr>
+                <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Nazwa usługi</th>
+                <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Opis</th>
+                <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Orientacyjny czas
+                    wykonania
+                </th>
+                <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Wykonywana poza
+                    sklepem
+                </th>
+                <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-4 text-gray-600">Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service : ${services}">
+                <td class="py-2 px-4 border-b border-gray-300" th:text="${service.name}">Nazwa</td>
+                <td class="py-2 px-4 border-b border-gray-300" th:text="${service.description}">Opis</td>
+                <td class="py-2 px-4 border-b border-gray-300" th:text="${service.expectedTime} + ' minut'">czas</td>
+                <td class="py-2 px-4 border-b border-gray-300" th:text="${service.isDoneOffsite} ? Tak : Nie">Tak/Nie
+                </td>
+                <td class="py-2 px-4 border-b border-gray-300">
+                    <a th:href="@{/services/{id}(id=${service.id})}">
+                        <button class="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-600">Wyświetl szczegóły
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

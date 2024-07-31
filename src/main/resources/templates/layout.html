@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Market budowlany "Bobby"</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+<div class="flex h-screen">
+    <div class="w-64 bg-gray-800 text-white p-6">
+        <h2 class="text-xl mb-4">Menu</h2>
+        <a href="/services" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Usługi</a>
+        <a href="/reservations" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Rezerwacje</a>
+        <a href="#employees" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Pracownicy</a>
+        <a href="#products" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Produkty</a>
+        <a href="#customers" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Klienci</a>
+        <a href="#orders" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Zamówienia</a>
+        <a href="#invoices" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Faktury</a>
+        <a href="#Dostawcy" class="block mb-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Dostawcy</a>
+    </div>
+    <div class="flex-grow p-6">
+        <div class="bg-gray-900 text-white text-center p-4 rounded">
+            <h1 class="text-2xl">System Obsługi Sklepu</h1>
+        </div>
+        <div class="mt-8" layout:fragment="content">
+        </div>
+    </div>
+</div>
+</body>
+</html>
