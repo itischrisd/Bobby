@@ -2,7 +2,7 @@
   <div>
     <img width="80" src="https://raw.githubusercontent.com/itischrisd/itis-PJATK/main/logo.svg" alt="" />
   </div>
-  Bobby
+  Hardware store "Bobby" management system
 </h1>
 
 Repository that contains implemantation of the final project for the MAS (Modeling and analysis of information systems) practical classes, taught by Emil Wcisło during studies on [PJAIT](https://www.pja.edu.pl/en/).
